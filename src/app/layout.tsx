@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
+import { UserProvider } from "@/context/UserContext";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -9,8 +10,8 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "IntujiOS - The Future of Work",
-  description: "Experience the next generation of operating systems for your business.",
+  title: "KingOS Enterprise",
+  description: "The next generation enterprise operating system.",
 };
 
 export default function RootLayout({
@@ -20,8 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${outfit.variable} antialiased`}>
-        {children}
+      <body className={`${outfit.variable} antialiased font-sans bg-background text-foreground`}>
+        <UserProvider>
+          {children}
+        </UserProvider>
       </body>
     </html>
   );
